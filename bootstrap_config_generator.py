@@ -18,6 +18,8 @@ oobm_int = ""
 oobm_int_ip = ""
 oobm_int_ip_mask = ""
 oobm_int_ip_mask_cidr = 0
+username = ""
+password = ""
 
 ####General Info####
 ##loop for hostname and domain as string with verficiation
@@ -66,6 +68,7 @@ while check == True:
 
 
 
+
 ####End General Info####
 
 ####Vendor Specific Info####
@@ -81,6 +84,19 @@ while check == True:
 	device_type = int(input("Enter 1 for Cisco and 2 for Juniper:"))
 	if device_type == 1:
 		#print("Cisco specific commands")
+		##loop for username and password as string with verficiation
+		check = True
+		while check == True:
+			username = str(input("Enter device username: "))
+			print("Note: Enter a password placeholder only!")
+			password = str(input("Enter password placeholder: "))
+			print("Is {}, {} the correct username and password placeholder".format(username,password))
+			#check response, make answer lower and strip to y or n
+			username_check = str(input('Yes or No: )').lower().strip())
+			if hostname_check[0] == 'y':
+				check = False
+			if hostname_check[0] != 'y':
+				check = True
 		check = False
 	if device_type == 2:
 		#print("Juniper specific commands")
@@ -106,7 +122,11 @@ if device_type == 1:
 		f.write("\n no shut")
 		f.write("\n exit")
 		f.write("\n ip domain-name " + domain_name)
+		f.write("\n username {} priv 15 password {}".format(username,password))
 		f.write("\n crypto key generate rsa mod 2048")
+		f.write("\n line vty 0 15")
+		f.write("\n transport input ssh")
+		f.write("\n login local")
 		f.write("\n end")
 		f.write("\n write")
 		f.write("\n show ip int bri")
@@ -116,8 +136,10 @@ if device_type == 2:
 	with open(filename,'w') as f:
 		f.write("\n configure")
 		f.write("\n set system login user admin authentication plain-text-password")
+		f.write("\n set system root-authentication plain-text-password")
 		f.write("\n set system login user admin class super-user")
-		f.write("\n set host-name " + hostname)
+		f.write("\n delete chassis auto-image-upgrade")
+		f.write("\n set system host-name " + hostname)
 		if oobm_int_ip == 'dhcp':
 			f.write("\n set interfaces " + oobm_int + " unit 0 family inet dhcp")
 		else:
