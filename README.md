@@ -33,4 +33,4 @@ Boot strap configs will build IP reachability to an machine external to the lab 
 
 ![python_automation_diagram](https://user-images.githubusercontent.com/110405079/182413710-9bbd0026-b152-4cbc-8409-87d212860ab4.PNG)
 
-Diagram above shows the devices to be configured using 
+Diagram above shows the devices to be configured using python
