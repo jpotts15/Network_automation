@@ -21,13 +21,15 @@ I have a habit of learning new things, doing it once then moving on and forgetti
 
 I originally was planning a lab for Cisco SPCOR study which is why its a service provider like network but wanted to shortcut some network automation learning so reusing this for now. 
 
-**Boot Strap Configs**
+**Boot Strap Config Generator**
 
 Boot strap configs will build IP reachability to an machine external to the lab which will run various automations. These configs will include:
 1. Configure hostname, domain and generate SSL certs (if required) - doing this manually to enable ssh
 2. OOBM interface configured for DHCP and put in management VRF
 3. Allow SSH access to a specific IP for the external automation host
-4. Verify network reachability 
+4. Verify network reachability
+
+Since this is about automation I thought why not write a config generator but as always there are a lot of little issues so this took a bit. The code probably could be better but I'm happy with the results for now. 
 
 **Python Automation**
 
