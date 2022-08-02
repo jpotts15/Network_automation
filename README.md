@@ -10,3 +10,4 @@ Goal
 3. Use python with various modules to configure several devices
 4. Use Ansible using various playbooks/methods to configure several different devices
 
+![overall_network_diagram](https://user-images.githubusercontent.com/110405079/182412840-ec67553d-2c30-4008-85e5-c1b855d076da.PNG)
