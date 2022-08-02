@@ -118,7 +118,10 @@ if device_type == 2:
 		f.write("\n set system login user admin authentication plain-text-password")
 		f.write("\n set system login user admin class super-user")
 		f.write("\n set host-name " + hostname)
-		f.write("\n set interfaces " + oobm_int + " unit 0 family inet address " + oobm_int_ip + "/" + str(oobm_int_ip_mask_cidr))
+		if oobm_int_ip == 'dhcp':
+			f.write("\n set interfaces " + oobm_int + " unit 0 family inet dhcp")
+		else:
+			f.write("\n set interfaces " + oobm_int + " unit 0 family inet address " + oobm_int_ip + "/" + str(oobm_int_ip_mask_cidr))
 		f.write("\n commit")
 
 
