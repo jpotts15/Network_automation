@@ -9,7 +9,7 @@ username_input = input("Enter username: ")
 password_input = getpass()
 
 #define the device as a dictionary
-cisco1 = {
+device = {
     "device_type": "cisco_ios",
     "host": "192.168.2.179",
     "username": username_input,
@@ -21,7 +21,7 @@ command1 = "show ip int brief"
 command2 = "show ip route"
 
 #initiate connection handler with all the variables from the device variable (dict) then send it commands
-with ConnectHandler(**cisco1) as net_connect:
+with ConnectHandler(**device) as net_connect:
     output1 = net_connect.send_command(command1)
     output2 = net_connect.send_command(command2)
 

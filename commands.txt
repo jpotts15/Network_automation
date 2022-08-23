@@ -1,0 +1,3 @@
+show ip int brief
+show ip route
+show ip vrf

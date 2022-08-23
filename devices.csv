@@ -1,0 +1,13 @@
+device_type,host,Hostname,oobm_int,oobm_int_ip
+cisco_ios,192.168.2.179,cisco_ce1,gi0/3,dhcp
+cisco_ios,192.168.2.182,cisco_ce1,gi0/3,dhcp
+cisco_ios,192.168.2.137,enterprise_siite2r1,fa6/0,dhcp
+cisco_ios,192.168.2.156,enterprise_edge1,fa6/0,dhcp
+cisco_ios,192.168.2.149,enterprise_site3,fa6/0,dhcp
+cisco_ios,192.168.2.135,enterprise_site2r2,fa6/0,dhcp
+cisco_ios,192.168.2.134,enterprise_core1,fa6/0,dhcp
+cisco_ios,192.168.2.133,enterprise_site1r2,fa6/0,dhcp
+cisco_ios,192.168.2.155,enterprise_core2,fa6/0,dhcp
+cisco_ios,192.168.2.154,enterprise_edge2,fa6/0,dhcp
+cisco_ios,192.168.2.131,enterprise_site1r1,fa6/0,dhcp
+cisco_ios,192.168.2.140,enterprise_core3,fa6/0,dhcp

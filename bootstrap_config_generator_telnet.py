@@ -26,6 +26,7 @@ oobm_int_ip_mask = ""
 oobm_int_ip_mask_cidr = 0
 username = ""
 password = ""
+juniper_root_password = ""
 
 ####General Info####
 ##loop for hostname and domain as string with verficiation
@@ -105,7 +106,11 @@ while check == True:
 		check = False
 	if device_type == 2:
 		#print("Juniper specific commands")
-		check = False
+		check == True
+		while check == True:
+			print("Note: Enter a root password ")
+			juniper_root_password = getpass()
+			check = False
 
 ####End Vendor Specific Info####
 
@@ -117,7 +122,8 @@ filename = "bootstrap_config_" + hostname + ".txt"
 #open/create new output file and write various lines to it
 if device_type == 1:
 	with open(filename,'w') as f:
-		f.write("conf t")
+		f.write("\n en")
+		f.write("\n conf t")
 		f.write("\n hostname " + hostname)
 		f.write("\n interface " + oobm_int)
 		if oobm_int_ip == 'dhcp':
@@ -141,10 +147,6 @@ if device_type == 1:
 
 if device_type == 2:
 	with open(filename,'w') as f:
-		f.write("\n cli")
-		f.write("\n configure")
-		f.write("\n set system login user admin authentication plain-text-password")
-		f.write("\n set system root-authentication plain-text-password")
 		f.write("\n set system login user admin class super-user")
 		f.write("\n delete chassis auto-image-upgrade")
 		f.write("\n set system host-name " + hostname)
@@ -181,14 +183,38 @@ if send_to_device[0] == 'y':
 		telnetport = input("input telnet port number: ")
 		tn = telnetlib.Telnet("192.168.2.15", telnetport)
 		sleep(5)
-		tn.write(b"\r\n")
-		tn.write(b"\r\n")
+		tn.write(b"\n")
+		sleep(1)
+		tn.write(b"root\n")
+		sleep(1)
+		tn.write(b"\n")
+		sleep(1)
+		tn.write(b"cli\n")
+		tn.write(b"configure\n")
+		tn.write(b"set system login user admin authentication plain-text-password\n")
+		tn.write(b"\n")
+		sleep(1)
+		tn.write(juniper_root_password.encode('ascii') + b"\n")
+		sleep(1)
+		tn.write(juniper_root_password.encode('ascii') + b"\n")
+		tn.write(b"\n")
+		sleep(1)
+		tn.write(b"set system root-authentication plain-text-password\n")
+		sleep(1)
+		tn.write(juniper_root_password.encode('ascii') + b"\n")
+		sleep(1)
+		tn.write(juniper_root_password.encode('ascii') + b"\n")
+		tn.write(b"\n")
+		sleep(1)
+		tn.write(b"\n")
 		sleep(5)
 		with open (filename, 'r') as telnet_file:
 			for line in telnet_file:
-				tn.write(line.encode('ascii') + b"\r\n")
+				tn.write(line.encode('ascii') + b"\n")
 				sleep(1)
-			tn.write(b"exit\r\n")
+			tn.write(b"exit\n")
+			tn.write(b"exit\n")
+			tn.write(b"exit\n")
 		print("sending complete!")
 if send_to_device[0] != 'y':
 	print("File saved but not sent, exiting!")
