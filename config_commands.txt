@@ -1,2 +1,3 @@
-line vty 0 15
-transport input ssh
+int ibgp_link
+ip add ibgp_int_ip ibgp_int_mask
+no shut

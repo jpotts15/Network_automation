@@ -3,12 +3,22 @@
     {
       "hostname": "cisco_ce1",
       "device_type": "cisco_ios",
-      "host": "192.168.2.179"
+      "host": "192.168.2.179",
+      "vars": {
+        "ibgp_link": "gi0/2",
+        "ibgp_int_ip": "172.16.0.1",
+        "ibgp_int_mask": "255.255.255.252"
+    }
     },
     {
       "hostname": "cisco_ce2",
       "device_type": "cisco_ios",
-      "host": "192.168.2.182"
+      "host": "192.168.2.182",
+      "vars": {
+        "ibgp_link": "gi0/2",
+        "ibgp_int_ip": "172.16.0.2",
+        "ibgp_int_mask": "255.255.255.252"
+    }
     }
   ]
 }
