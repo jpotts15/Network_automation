@@ -64,6 +64,15 @@ Limitations:
 
 **Netmiko_config_devices_improved.py**
 Next iteration of last script using actual function definitations and reuse. 
+Added:
+1. Made some things into functions, might eventually move these to a class and out of the script
+2. Error handling
 
 **eveng_api.py**
 I started to work on a EVE-NG frontend so that I could quickly call a script to grab the telnet IP/Port for devices and input that into other scripts. Ran into some trouble w/ the telnet link so backburner now, there is another repo called EVENG-API that already does this so will likely just use that but still using this as a simple API example
+
+**netmiko_config_devices_unique.py**
+Configures multiple devices loaded from a file with device specific configs and pre/post checks all nested in the devices.json. Basically makes the netmiko_config_devices_from_json.py a single input script
+
+**simple_config_parser**
+This is a fork of the Netmiko_config_devices_from_json.py with just the config generator, takes in a json file with variables and a list of commands from text and generates per device configs
