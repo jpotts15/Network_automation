@@ -64,3 +64,6 @@ Limitations:
 
 **Netmiko_config_devices_improved.py**
 Next iteration of last script using actual function definitations and reuse. 
+
+**eveng_api.py**
+I started to work on a EVE-NG frontend so that I could quickly call a script to grab the telnet IP/Port for devices and input that into other scripts. Ran into some trouble w/ the telnet link so backburner now, there is another repo called EVENG-API that already does this so will likely just use that but still using this as a simple API example
