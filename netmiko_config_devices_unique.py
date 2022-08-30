@@ -72,7 +72,7 @@ with open(device_file) as json_file:
         }
 #initiate connection handler with all the variables from the device variable (dict) then send it commands
         with ConnectHandler(**device) as net_connect:
-            device_vars = reader['vars']
+            device_vars = entry['vars']
             #if yes to prechecks run through some show commands
             if prechecks == True:
                 with open(device_vars['prechecks']) as precheck_command_file:
